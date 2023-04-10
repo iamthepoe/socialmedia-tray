@@ -1,6 +1,29 @@
-const SocialMediaMenu = [];
-const { BrowserWindow } = require('electron');
+const { BrowserWindow, app } = require('electron');
 var path = require('path');
+
+const SocialMediaMenu = [];
+const MenuStandardOptions = [
+	{
+		label: 'Fechar',
+		click: () => {
+			app.quit();
+		},
+	},
+	{
+		label: 'Configurações',
+		click: () => {
+			const win = new BrowserWindow({
+				width: 600,
+				height: 400,
+				webPreferences: {
+					nodeIntegration: true,
+					contextIsolation: false,
+				},
+			});
+			win.loadURL(`file://${__dirname}/../views/settings.ejs`);
+		},
+	},
+];
 
 function openWindow(name, url, maximized = false, square = false) {
 	let win = null;
@@ -49,7 +72,7 @@ const SocialMediaMenuFactory = (SocialMediaList) => {
 		if (SocialMedia.checked) SocialMediaMenu.push(genOption(SocialMedia));
 	});
 
-	return SocialMediaMenu;
+	return SocialMediaMenu.concat(MenuStandardOptions);
 };
 
 module.exports = SocialMediaMenuFactory;

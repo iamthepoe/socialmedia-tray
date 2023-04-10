@@ -35,9 +35,7 @@ function restartApplication() {
 	app.exit();
 }
 
-function setupMainWindow(){
-
-}
+function setupMainWindow() {}
 
 function mainWindow() {
 	let win = null;
@@ -74,31 +72,8 @@ function mainWindow() {
 
 	tray = new Tray(iconFile);
 
-	const contextMenu = Menu.buildFromTemplate(
-		SocialMediaMenu.concat([
-			{
-				label: 'Fechar',
-				click: () => {
-					app.quit();
-				},
-			},
-			{
-				label: 'Configurações',
-				click: () => {
-					const win = new BrowserWindow({
-						width: 600,
-						height: 400,
-						webPreferences: {
-							nodeIntegration: true,
-							contextIsolation: false,
-						},
-					});
-					win.loadURL(`file://${__dirname}/settings.ejs`);
-				},
-			},
-		])
-	);
-	
+	const contextMenu = Menu.buildFromTemplate(SocialMediaMenu);
+
 	tray.setContextMenu(contextMenu);
 
 	ipcMain.on('select-sites', (event, data) => {
