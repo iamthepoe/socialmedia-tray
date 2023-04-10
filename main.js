@@ -19,7 +19,7 @@ function setupSocialMediaList() {
 	SocialMediaMenu = SocialMediaMenuFactory(SocialMediaList);
 }
 
-function updateSiteList(SocialMediaList, data) {
+function updateList(SocialMediaList, data) {
 	return SocialMediaList.map((socialMedia) => {
 		if (data.some((item) => item === socialMedia.name.toLowerCase())) {
 			socialMedia.checked = true;
@@ -102,7 +102,7 @@ function mainWindow() {
 	tray.setContextMenu(contextMenu);
 
 	ipcMain.on('select-sites', (event, data) => {
-		SocialMediaList = updateSiteList(SocialMediaList, data);
+		SocialMediaList = updateList(SocialMediaList, data);
 		store.set('socialmedialist', SocialMediaList);
 		event.reply('saved-sites', 'Ok!');
 		restartApplication();
