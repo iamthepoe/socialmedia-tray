@@ -35,8 +35,6 @@ function restartApplication() {
 	app.exit();
 }
 
-function setupMainWindow() {}
-
 function mainWindow() {
 	let win = null;
 	// Icon main
