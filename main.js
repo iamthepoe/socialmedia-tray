@@ -8,7 +8,7 @@ var path = require('path');
 let SocialMediaList = null;
 let SocialMediaMenu = null;
 
-function setupApp() {
+function setupSocialMediaList() {
 	if (store.get('socialmedialist')) {
 		SocialMediaList = store.get('socialmedialist');
 	} else {
@@ -33,6 +33,10 @@ function updateSiteList(SocialMediaList, data) {
 function restartApplication() {
 	app.relaunch();
 	app.exit();
+}
+
+function setupMainWindow(){
+
 }
 
 function mainWindow() {
@@ -69,6 +73,7 @@ function mainWindow() {
 	win.loadFile('index.html');
 
 	tray = new Tray(iconFile);
+
 	const contextMenu = Menu.buildFromTemplate(
 		SocialMediaMenu.concat([
 			{
@@ -93,6 +98,7 @@ function mainWindow() {
 			},
 		])
 	);
+	
 	tray.setContextMenu(contextMenu);
 
 	ipcMain.on('select-sites', (event, data) => {
@@ -103,6 +109,6 @@ function mainWindow() {
 	});
 }
 
-setupApp();
+setupSocialMediaList();
 // Load - start ini
 app.whenReady().then(mainWindow);
