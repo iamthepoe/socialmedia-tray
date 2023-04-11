@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Instagram",
+        "url": "https://instagram.com",
+        "windowOptions": {
+                "maximized": false,
+                "square": false
+        }
+    },
+    {
+        "name": "LinkedIn",
+        "url": "https://linkedin.com",
+        "windowOptions": {
+                "maximized": false,
+                "square": false
+        }
+    },
+    {
+        "name": "Twitter",
+        "url": "https://twitter.com",
+        "windowOptions": {
+                "maximized": false,
+                "square": false
+        }
+    },
+    {
+        "name": "Facebook",
+        "url": "https://facebook.com",
+        "windowOptions": {
+                "maximized": false,
+                "square": false
+        }
+    },
+    {
+        "name": "Youtube",
+        "url": "https://youtube.com",
+        "windowOptions": {
+                "maximized": true,
+                "square": false
+        }
+    },
+    {
+        "name": "Discord",
+        "url": "https://discord.com/channels/@me",
+        "windowOptions": {
+                "maximized": false,
+                "square": true
+        }
+    },
+    {
+        "name": "Twitch",
+        "url": "https://www.twitch.tv",
+        "windowOptions": {
+                "maximized": true,
+                "square": true
+        }
+    }
+]
