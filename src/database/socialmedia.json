@@ -5,7 +5,8 @@
         "windowOptions": {
                 "maximized": false,
                 "square": false
-        }
+        },
+        "checked": true
     },
     {
         "name": "LinkedIn",
@@ -13,7 +14,8 @@
         "windowOptions": {
                 "maximized": false,
                 "square": false
-        }
+        },
+        "checked": true
     },
     {
         "name": "Twitter",
@@ -21,7 +23,8 @@
         "windowOptions": {
                 "maximized": false,
                 "square": false
-        }
+        },
+        "checked": true
     },
     {
         "name": "Facebook",
@@ -29,7 +32,8 @@
         "windowOptions": {
                 "maximized": false,
                 "square": false
-        }
+        },
+        "checked": true
     },
     {
         "name": "Youtube",
@@ -37,7 +41,8 @@
         "windowOptions": {
                 "maximized": true,
                 "square": false
-        }
+        },
+        "checked": true
     },
     {
         "name": "Discord",
@@ -45,7 +50,8 @@
         "windowOptions": {
                 "maximized": false,
                 "square": true
-        }
+        },
+        "checked": true
     },
     {
         "name": "Twitch",
@@ -53,6 +59,7 @@
         "windowOptions": {
                 "maximized": true,
                 "square": true
-        }
+        },
+        "checked": true
     }
 ]
