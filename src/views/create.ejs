@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Adicionar rede social</title>
+	</head>
+	<body>
+		<form>
+			<input type="text" placeholder="Nome" name="name" id="name" />
+			<input type="text" placeholder="URL" name="url" id="url" />
+			<label for="maximized">Maximized:</label>
+			<input
+				type="checkbox"
+				name="maximized"
+				value="maximized"
+				id="maximized"
+			/>
+			<label for="square">Squared:</label>
+			<input type="checkbox" name="square" value="square" id="square" />
+			<label for="icon">Ícone:</label>
+			<input type="file" name="icon" id="icon" />
+			<input type="submit" value="Salvar">
+		</form>
+	</body>
+	<script>
+		const DatabaseClient = require('../database/DatabaseClient.js');
+		const $form = document.querySelector('form');
+
+		$form.addEventListener('submit', (event) => {
+			event.preventDefault();
+
+			const name = $form.querySelector('#name').value;
+			const url = $form.querySelector('#url').value;
+			const maximized = $form.querySelector('#maximized').checked;
+			const square = $form.querySelector('#square').checked;
+
+			const socialMedia = {
+				name,
+				url,
+				windowOptions: {
+					maximized: maximized,
+					square: square
+				}
+			};
+
+			DatabaseClient.create(socialMedia);
+
+			alert("Rede social adicionada com sucesso!");
+		});
+	</script>
+</html>
