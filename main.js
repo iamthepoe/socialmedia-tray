@@ -80,6 +80,19 @@ function mainWindow() {
 		event.reply('saved-sites', 'Ok!');
 		restartApplication();
 	});
+
+	ipcMain.on('open-createSocialMedia-window', (event,data)=>{
+		const createSocialMediaWin = new BrowserWindow({
+			width: 800,
+			height: 600,
+			webPreferences: {
+				nodeIntegration: true,
+				contextIsolation: false,
+			},
+ 		});
+		createSocialMediaWin.setIcon(iconFile);
+		createSocialMediaWin.loadURL(`file://${__dirname}/src/views/create.ejs`);
+	});
 }
 
 setupSocialMediaList();

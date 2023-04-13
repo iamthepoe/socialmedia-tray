@@ -5,6 +5,7 @@
 		<title>Configurações</title>
 	</head>
 	<body>
+		<button id="addSocialMediaBtn">Adicionar rede social</button>
 		<h1>Opções:</h1>
 		<form>
 			<% socialmediaoptions.forEach(SocialMedia => { %>
@@ -13,9 +14,7 @@
 					type="checkbox"
 					name="<%=SocialMedia.name.toLowerCase()%>"
 					value="<%=SocialMedia.name.toLowerCase()%>"
-					<% if (SocialMedia.checked) { %>
-						checked
-					<% } %>
+					<% if (SocialMedia.checked) { %> checked  <% } %>
 				/>
 				<%=SocialMedia.name%>
 			</label>
@@ -23,13 +22,20 @@
 			<% }); %>
 			<input type="submit" value="Salvar" />
 		</form>
+
 		<script>
 			const { ipcRenderer } = require('electron');
-			const form = document.querySelector('form');
-			form.addEventListener('submit', (event) => {
+			const $addSocialMediaBtn = document.querySelector('#addSocialMediaBtn');
+			const $form = document.querySelector('form');
+
+			$addSocialMediaBtn.addEventListener('click', ()=>{
+				ipcRenderer.send('open-createSocialMedia-window');
+			});
+
+			$form.addEventListener('submit', (event) => {
 				event.preventDefault();
 				const selectedSites = Array.from(
-					form.querySelectorAll('input[type=checkbox]:checked')
+					$form.querySelectorAll('input[type=checkbox]:checked')
 				).map((checkbox) => checkbox.value);
 				ipcRenderer.send('select-sites', selectedSites);
 			});

@@ -20,6 +20,7 @@ const MenuStandardOptions = [
 					contextIsolation: false,
 				},
 			});
+			win.setIcon(path.join(__dirname, '../icons/main.png'));
 			win.loadURL(`file://${__dirname}/../views/settings.ejs`);
 		},
 	},
