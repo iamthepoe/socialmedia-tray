@@ -48,7 +48,7 @@
         "name": "Discord",
         "url": "https://discord.com/channels/@me",
         "windowOptions": {
-                "maximized": false,
+                "maximized": true,
                 "square": true
         },
         "checked": true
