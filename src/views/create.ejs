@@ -35,6 +35,8 @@
 			const url = $form.querySelector('#url').value;
 			const maximized = $form.querySelector('#maximized').checked;
 			const square = $form.querySelector('#square').checked;
+			const icon = $form.querySelector('#icon').files[0];
+
 
 			const socialMedia = {
 				name,
@@ -45,7 +47,7 @@
 				}
 			};
 
-			DatabaseClient.create(socialMedia);
+			DatabaseClient.create(socialMedia, icon);
 
 			alert("Rede social adicionada com sucesso!");
 		});

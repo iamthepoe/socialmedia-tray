@@ -1,4 +1,5 @@
 const { app, BrowserWindow, screen, Tray, Menu, ipcMain } = require('electron');
+const DatabaseClient = require('./src/database/DatabaseClient.js');
 const Store = require('electron-store');
 const store = new Store();
 const ejse = require('ejs-electron');
@@ -9,12 +10,7 @@ let SocialMediaList = null;
 let SocialMediaMenu = null;
 
 function setupSocialMediaList() {
-	if (store.get('socialmedialist')) {
-		SocialMediaList = store.get('socialmedialist');
-	} else {
-		SocialMediaList = require('./src/modules/SocialMediaList.js');
-	}
-
+	SocialMediaList = require('./src/modules/SocialMediaList');
 	ejse.data('socialmediaoptions', SocialMediaList);
 	SocialMediaMenu = SocialMediaMenuFactory(SocialMediaList);
 }
@@ -76,7 +72,7 @@ function mainWindow() {
 
 	ipcMain.on('select-sites', (event, data) => {
 		SocialMediaList = updateList(SocialMediaList, data);
-		store.set('socialmedialist', SocialMediaList);
+		DatabaseClient.updateAll(SocialMediaList);
 		event.reply('saved-sites', 'Ok!');
 		restartApplication();
 	});
